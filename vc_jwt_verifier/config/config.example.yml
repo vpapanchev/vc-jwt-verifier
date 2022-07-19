@@ -1,0 +1,17 @@
+---
+services:
+  vc_jwt_verifier:
+    server:
+      host:
+      port:
+      debug: true
+    authorization:
+      username:
+      password:
+    resolver:
+      host: localhost
+      port: 8080
+      api:  "/1.0/identifiers/{did}"
+
+    logging:
+      level: DEBUG
