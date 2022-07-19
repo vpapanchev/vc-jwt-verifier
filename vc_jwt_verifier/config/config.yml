@@ -1,0 +1,13 @@
+---
+services:
+  vc_jwt_verifier:
+    server:
+      host:
+      port:
+      debug:
+    resolver:
+      host: uni-resolver
+      port: 8080
+      api:  "/1.0/identifiers/{did}"
+    logging:
+      level: DEBUG
