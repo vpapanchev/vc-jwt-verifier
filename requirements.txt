@@ -1,0 +1,10 @@
+PyYAML==6.0
+flask-restx==0.5.1
+Flask-HTTPAuth==4.5.0
+python-json-logger==2.0.2
+requests==2.27.1
+cffi==1.15.0
+cryptography==36.0.1
+pycparser==2.21
+PyJWT==2.3.0
+base58==2.1.1
