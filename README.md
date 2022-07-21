@@ -74,3 +74,11 @@ HTTP Response Format of `/verify/vp/?verify_vcs={true/false}&jwt={jwt_vp}` API:
 
 If the included credentials should also be verified, the W3C payload of the VP includes the included VCs also translated to the W3C Data Format. Note that, if the verification of a single credentials fails (or if some of the included credentials are not JSON-LD JWTs), the verification of the VP is regarded as unsuccessful. 
 
+## Supported Algorithms
+
+Currently, the following JWT algorithms and DID verification methods are supported:\
+JWT Algorithms:
+- EdDSA
+
+DID Verification Methods:
+- Ed25519VerificationKey2018 encoded in publicKeyBase58 format
