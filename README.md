@@ -82,3 +82,7 @@ JWT Algorithms:
 
 DID Verification Methods:
 - Ed25519VerificationKey2018 encoded in publicKeyBase58 format
+
+## Project status
+
+The project was created as a prototype used for evaluating purposes and might not be actively supported in the future.
