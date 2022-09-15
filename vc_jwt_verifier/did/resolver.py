@@ -3,7 +3,7 @@
 import requests
 import logging
 import time
-from multiprocessing import Pool
+from concurrent.futures import ThreadPoolExecutor
 
 from vc_jwt_verifier import utils
 
@@ -49,10 +49,15 @@ def resolve_multiple_dids(dids_data, log_time=False):
   """
   start = time.time()
   # resolve the DIDs in parallel
-  with Pool(NUM_PROCESSES) as p:
-    result = p.map(lambda x : (x, resolve_did(x)), list(dids_data.keys()))
+  def __resolve_did(did):
+    return did, resolve_did(did)
 
-  for did, did_document in result:
+  results = []
+  with ThreadPoolExecutor(max_workers=5) as executor:
+    for result in executor.map(__resolve_did, list(dids_data.keys())):
+      results.append(result)
+
+  for did, did_document in results:
     if not did_document:
       return f"Could not resolve DID: {did}"
     dids_data[did] = did_document

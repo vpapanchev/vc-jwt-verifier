@@ -88,7 +88,6 @@ def verify_complete_vp(jwt_vp):
   All necessary DIDs are resolved in parallel using the resolver.resolve_multiple_dids function.
   """
 
-
   # Get VP issuer
   presentation_jwt_payload = jwt_utils.get_jwt_payload(jwt_vp)
   presentation_jwt_header = jwt_utils.get_jwt_header(jwt_vp)
@@ -151,7 +150,7 @@ def verify_complete_vp(jwt_vp):
       dids_data[issuer_did] = None
 
   # Resolve all DIDs
-  error_msg = resolver.resolve_multiple_dids(dids_data)
+  error_msg = resolver.resolve_multiple_dids(dids_data, log_time=True)
   if error_msg:
     return __generate_error_response(error_msg)
 
