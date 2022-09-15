@@ -33,7 +33,7 @@ def resolve_did(did, log_time=False):
   if not document:
     logging.info(f'DID {did} could not be resolved.')
     return None
-  elif log_times:
+  elif log_time:
     # Only log performance for successful resolutions
     # log vcjwt_resolve_did,<did>,<time>
     logging.info(f'vcjwt_resolve_did,{did},{time.time() - start}')
