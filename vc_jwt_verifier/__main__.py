@@ -51,15 +51,12 @@ def verify_vp():
       return utils.generate_err_resp('Invalid Request: Missing jwt parameter', constants.HTTP_BAD_REQUEST)
 
     verify_included_credentials = request.args.get('verify_vcs')
-    if not verify_included_credentials:
+    if not verify_included_credentials or verify_included_credentials == 'false':
       response = api_handler.handle_verify_vp(vp_jwt, verify_included_credentials=False)
     elif verify_included_credentials == 'true':
-      response = api_handler.handle_verify_vp(vp_jwt, verify_included_credentials=True)
-    elif verify_included_credentials == 'false':
-      response = api_handler.handle_verify_vp(vp_jwt, verify_included_credentials=False)
+      response = api_handler.verify_complete_vp(vp_jwt)
     else:
       return utils.generate_err_resp('Invalid Request: Invalid verify_vcs parameter', constants.HTTP_BAD_REQUEST)
-
     return response, constants.HTTP_SUCCESS_STATUS
 
   return utils.generate_err_resp('Invalid Request Method', constants.HTTP_NOT_FOUND)
